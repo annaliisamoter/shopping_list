@@ -20,9 +20,13 @@ def add_new_shopping_list(lists_by_name, new_list_name):
     Returns:
       None
     """
+    if new_list_name in lists_by_name.keys():
+        print "That list already exists."
+        # figerout what return what gets us back into loop 3.
+    else:    
+        lists_by_name[new_list_name] = []
 
-    # your code here! 
-    pass
+    
 
 
 def remove_shopping_list(lists_by_name, list_name_to_remove):
@@ -37,9 +41,13 @@ def remove_shopping_list(lists_by_name, list_name_to_remove):
     Returns:
       None
     """
+    if list_name_to_remove in lists_by_name.keys():
+        del lists_by_name[list_name_to_remove]
+    else:
+        print "That list doesn't exist."
+     #   continue
 
-    # your code here! 
-    pass
+   
 
 
 def add_to_shopping_list(lists_by_name, list_name, items):
@@ -87,9 +95,8 @@ def display_shopping_list(lists_by_name, list_name):
     Returns:
       None
     """
-
-    # your code here! 
-    pass
+    for  items in lists_by_name[list_name]:
+        print items
 
 
 def show_all_lists(lists_by_name):
@@ -211,6 +218,8 @@ def execute_repl(shopping_lists_by_name):
 
             # get name of list and add it
             list_name = raw_input('Enter the name for your list: ')
+
+
             add_new_shopping_list(shopping_lists_by_name, list_name)
 
             # get items for list and add them
